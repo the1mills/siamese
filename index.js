@@ -1,7 +1,4 @@
-//require('setimmediate'); //cross-platform compatible (node + browser) - https://github.com/YuzuJS/process.nextTick
 
-// TODO: https://github.com/npm/nopt
-// TODO: https://github.com/nodejs/node-v0.x-archive/issues/8648
 
 function Siamese() {
 }
