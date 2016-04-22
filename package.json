@@ -1,6 +1,6 @@
 {
   "name": "siamese",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "promisifies JSON parse and stringify methods and makes them idempotent like we wish they would be",
   "main": "index.js",
   "dependencies": {
@@ -16,8 +16,7 @@
     "suman": "^1.1.3"
   },
   "scripts": {
-    "test": "suman test",
-    "debug_mocha": "node-debug _mocha"
+    "test": "suman test"
   },
   "repository": {
     "type": "git",
