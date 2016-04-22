@@ -1,8 +1,8 @@
 {
-  "name": "npm-idempotent-json",
+  "name": "siamese",
   "main": "index.js",
-  "version": "0.8.9",
-  "homepage": "https://github.com/ORESoftware/npm-idempotent-json",
+  "version": "2.0.2",
+  "homepage": "https://github.com/the1mills/siamese.git",
   "authors": [
     "oresoftware"
   ],
