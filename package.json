@@ -1,6 +1,6 @@
 {
   "name": "siamese",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "promisifies JSON parse and stringify methods and makes them idempotent like we wish they would be",
   "main": "index.js",
   "dependencies": {
