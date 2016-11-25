@@ -1,7 +1,7 @@
 const suman = require('suman');
 const Test = suman.init(module);
 
-Test.describe('test', function (assert) {
+Test.create('test', function (assert) {
 
 	const ijson = require('..');
 

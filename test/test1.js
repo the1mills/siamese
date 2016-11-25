@@ -3,18 +3,25 @@
  */
 
 
-const ijson = require('..');
 
-ijson.stringify(5).then(function(val){
-	console.log(typeof val);
-});
+const suman = require('suman');
+const Test = suman.init(module);
 
-ijson.parse(ijson.stringify(ijson.stringify(ijson.stringify(5)))).then(function (val) {
+Test.create('test', function (assert) {
 
-	console.log('resolved:', val);
+  const ijson = require('..');
 
-}, function (e) {
+  this.it('reacts',t => {
+    return ijson.parse(5).then(ijson.stringify).then(ijson.stringify).then(ijson.stringify(5)).then(function (val) {
+      console.log(typeof val);
+    });
+  });
 
-	console.log('rejected:', e);
+  this.it('test numbers',t => {
+    return ijson.parse(ijson.stringify(ijson.stringify(ijson.stringify(5)))).then(function (val) {
+      assert(typeof val === 'number', ' val was not a number.');
+    });
+  });
+
 });
 
