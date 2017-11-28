@@ -8,6 +8,7 @@
 *.json
 *.yml
 *.DS_Store
+*.html
 
 ### folders
 .idea
