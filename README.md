@@ -1,8 +1,7 @@
 
 
-# siamese = idempotent json + promisification
+# Siamese = Idempotent JSON + Promisification
 
-===============
 
 ## Installation
 
@@ -12,8 +11,8 @@
 
 # Purpose
 
-1. Prevent yak shaving - stop worrying about whether what your parsing is already parsed.
-2. Avoid try/catch - we have promisified JSON.parse()/JSON.stringify - so no more try/catch needed. 
+1. <b>Prevent yak shaving</b> - stop <i>worrying</i> about whether what your parsing is already parsed.
+2. <b>Avoid try/catch</b> - we have promisified JSON.parse()/JSON.stringify - so no more try/catch needed. 
 
 
 ## Basic usage
