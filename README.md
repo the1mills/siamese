@@ -1,11 +1,20 @@
-siamese = idempotent json + promisification
+
+
+# siamese = idempotent json + promisification
+
 ===============
 
 ## Installation
 
-```js
-npm install -S siamese
+```bash
+ $ npm install siamese -S
 ```
+
+# Purpose
+
+1. Prevent yak shaving - stop worrying about whether what your parsing is already parsed.
+2. Avoid try/catch - we have promisified JSON.parse()/JSON.stringify - so no more try/catch needed. 
+
 
 ## Basic usage
 
@@ -14,7 +23,7 @@ const siam = global.siam = require('siamese');  // you have the choice whether i
 
 ```
 
-This library provides two primary features that I believe are missing from the JSON spec
+This library provides two primary features that I believe are unfortunately missing from the JSON spec
 
 1 => Idempotence =>
 
@@ -24,27 +33,30 @@ This library provides two primary features that I believe are missing from the J
 2 => Error handling and flow control with ES6 Promises =>
 
 * Promises do synchronous error-handling out-of-the-box (just don't forget the rejection handler or catch block)
-* We can pass promises to siam.parse and siam.stringify and it can parse/stringify the resolution of the promise
+* We can pass promises to siam.parse() and siam.stringify() and it can parse/stringify the resolution of the promise
 
 
 ## Usage
+
 ```js
 
-
-siam.parse({foo:'bar'}).then(function(val){   // won't throw an error, even though we passed it a plain object
+ // won't throw an error, even though we passed it a plain object
+ 
+siam.parse({foo:'bar'}).then(function(val){  
     console.log(val);  // =>  {foo:'bar'}
-}).catch(function(err){
+})
+.catch(function(err){
      //nope
 });
 
 
 // you can pass it a promise like so:
 
-siam.parse(new Promise(function(resolve){
-     resolve({foo:'bar'});
-}).then(function(val){
+siam.parse(new Promise((resolve) => resolve({foo:'bar'})))
+.then(function(val){
 
-}).catch(function(err){
+})
+.catch(function(err){
 
 });
 
@@ -58,7 +70,6 @@ Promise.all([
 ])
 
 // and since siam.parse and siam.stringify accept promises as arguments, you can do
-
 
 siam.parse(siam.stringify(siam.stringify(siam.stringify({foo:'bar'})))).then(function(val){
     console.log(val);

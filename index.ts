@@ -32,7 +32,7 @@ export const parse = function (obj : Promise<any> | string) {
       let ret = JSON.parse(obj);
       if (typeof ret === 'object' && ('#stringified' in ret)) {
         if (Object.keys(ret).length > 1) {
-          console.error('Warning: object had more than 1 key, including #stringified key.');
+          log.error('Warning: object had more than 1 key, including #stringified key.');
         }
         ret = ret[ '#stringified' ];
       }
@@ -46,13 +46,13 @@ export const stringify = function (obj: Promise<any> | Object) {
   return Promise.resolve(obj).then(function (obj) {
 
     if (typeof obj === 'string') {
-      if (obj.indexOf('{"#stringified"') === 0) {
+      if (String(obj).indexOf('{"#stringified"') === 0) {
         return obj;
       }
     }
 
     if (typeof obj === 'object' && Object.keys(obj).length === 1 && ('#stringified' in obj)) {
-      console.error('warning: object you wish to stringify with IJSON already has a top-level "#stringified" property.');
+      log.error('warning: object you wish to stringify with IJSON already has a top-level "#stringified" property.');
       return customStringify(obj);
     }
 
