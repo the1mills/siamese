@@ -1,10 +1,11 @@
+'use strict';
 
 const log = {
   info: console.log.bind(console, ' [siamese lib] '),
   error: console.error.bind(console, ' [siamese lib] ')
 };
 
-const customStringify = function (v: any) {
+const customStringify = function (v: any): string {
   let cache: Array<any> = [];
   return JSON.stringify(v, function (key, value) {
     if (typeof value === 'object' && value !== null) {
@@ -19,46 +20,45 @@ const customStringify = function (v: any) {
   });
 };
 
-
-export const parse = function (obj : Promise<any> | string) {
-
+export const parse = function (obj: Promise<string> | string) {
+  
   return Promise.resolve(obj).then(function (obj) {
     
     if (typeof obj !== 'string') {
       //warning: looks like you have called ijson.parse on an object that was already parsed
       return obj;
     }
-
-      let ret = JSON.parse(obj);
-      if (typeof ret === 'object' && ('#stringified' in ret)) {
-        if (Object.keys(ret).length > 1) {
-          log.error('Warning: object had more than 1 key, including #stringified key.');
-        }
-        ret = ret[ '#stringified' ];
+    
+    let ret = JSON.parse(obj);
+    if (ret && typeof ret === 'object' && ('#stringified' in ret)) {
+      if (Object.keys(ret).length > 1) {
+        log.error('Warning: object had more than 1 key, including #stringified key.');
       }
-      return ret;
+      ret = ret['#stringified'];
+    }
+    return ret;
     
   });
 };
 
-export const stringify = function (obj: Promise<any> | Object) {
-
+export const stringify = function (obj: Promise<Object> | Object) {
+  
   return Promise.resolve(obj).then(function (obj) {
-
+    
     if (typeof obj === 'string') {
       if (String(obj).indexOf('{"#stringified"') === 0) {
         return obj;
       }
     }
-
-    if (typeof obj === 'object' && Object.keys(obj).length === 1 && ('#stringified' in obj)) {
-      log.error('warning: object you wish to stringify with IJSON already has a top-level "#stringified" property.');
+    
+    if (obj && typeof obj === 'object' && Object.keys(obj).length === 1 && ('#stringified' in obj)) {
+      log.error('warning: object you wish to stringify using the siamese library already has a top-level "#stringified" property.');
       return customStringify(obj);
     }
-
-    return customStringify({ '#stringified': obj });
-
+    
+    return customStringify({'#stringified': obj});
+    
   });
-
+  
 };
 

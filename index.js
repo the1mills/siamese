@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
 var log = {
     info: console.log.bind(console, ' [siamese lib] '),
@@ -22,7 +22,7 @@ exports.parse = function (obj) {
             return obj;
         }
         var ret = JSON.parse(obj);
-        if (typeof ret === 'object' && ('#stringified' in ret)) {
+        if (ret && typeof ret === 'object' && ('#stringified' in ret)) {
             if (Object.keys(ret).length > 1) {
                 log.error('Warning: object had more than 1 key, including #stringified key.');
             }
@@ -38,8 +38,8 @@ exports.stringify = function (obj) {
                 return obj;
             }
         }
-        if (typeof obj === 'object' && Object.keys(obj).length === 1 && ('#stringified' in obj)) {
-            log.error('warning: object you wish to stringify with IJSON already has a top-level "#stringified" property.');
+        if (obj && typeof obj === 'object' && Object.keys(obj).length === 1 && ('#stringified' in obj)) {
+            log.error('warning: object you wish to stringify using the siamese library already has a top-level "#stringified" property.');
             return customStringify(obj);
         }
         return customStringify({ '#stringified': obj });

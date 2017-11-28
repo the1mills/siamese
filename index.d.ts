@@ -1,2 +1,2 @@
-export declare const parse: (obj: string | Promise<any>) => Promise<any>;
-export declare const stringify: (obj: Object | Promise<any>) => Promise<string>;
+export declare const parse: (obj: string | Promise<string>) => Promise<any>;
+export declare const stringify: (obj: Object | Promise<Object>) => Promise<string>;
