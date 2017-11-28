@@ -1,18 +1,13 @@
 {
   "name": "siamese",
   "version": "2.0.4",
-  "description": "promisifies JSON parse and stringify methods and makes them idempotent like we wish they would be",
+  "description": "Promisifies JSON parse and stringify + makes them idempotent like we wish they would be.",
   "main": "index.js",
-  "dependencies": {
-  },
+  "typings": "index.d.ts",
+  "types": "index.d.ts",
   "devDependencies": {
-    "babel-cli": "^6.6.0",
-    "nopt": "^3.0.6",
-    "suman": "latest",
-    "babel-preset-es2015": "^6.6.0",
-    "babel-preset-stage-1": "^6.5.0",
-    "babel-preset-stage-2": "^6.5.0",
-    "babel-preset-stage-3": "^6.5.0"
+    "@types/core-js": "^0.9.43",
+    "@types/node": "^8.0.53"
   },
   "scripts": {
     "test": "suman test"
@@ -28,6 +23,6 @@
     "IJSON",
     "idempotent-json"
   ],
-  "author": "Olegzandr Denman",
-  "license": "ISC"
+  "author": "Olegzandr VD",
+  "license": "MIT"
 }

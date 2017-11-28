@@ -1,7 +1,3 @@
-/**
- * Created by Olegzandr on 6/24/16.
- */
-
 
 
 const suman = require('suman');

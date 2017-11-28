@@ -1,0 +1,34 @@
+
+### matching files
+*.sh
+*.ts
+*.md
+*.txt
+*.log
+*.json
+*.yml
+*.DS_Store
+
+### folders
+.idea
+node_modules
+coverage
+.nyc_output
+test
+dist
+.github
+.tscmultiwatch
+.vscode
+
+### files
+.gitignore
+.npmignore
+.gitattributes
+suman.conf.js
+.editorconfig
+.babelrc
+.dockerignore
+yarn.lock
+
+### negation
+!*.d.ts
