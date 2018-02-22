@@ -1,20 +1,22 @@
 'use strict';
 
+const util = require('util');
+
 const log = {
   info: console.log.bind(console, ' [siamese lib] '),
   error: console.error.bind(console, ' [siamese lib] ')
 };
 
-const customStringify = function (v: any): string {
-  let cache: Array<any> = [];
+const customStringify = function (v: any) : string {
+  let cache = new Map();
   return JSON.stringify(v, function (key, value) {
     if (typeof value === 'object' && value !== null) {
-      if (cache.indexOf(value) !== -1) {
+      if (cache.get(value)) {
         // Circular reference found, discard key
         return;
       }
       // Store value in our collection
-      cache.push(value);
+      cache.set(value, true);
     }
     return value;
   });
@@ -25,7 +27,7 @@ export const parse = function (obj: Promise<string> | string) {
   return Promise.resolve(obj).then(function (obj) {
     
     if (typeof obj !== 'string') {
-      //warning: looks like you have called ijson.parse on an object that was already parsed
+      log.error('warning: looks like you have called ijson.parse on an object that was already parsed => ' + util.inspect(obj));
       return obj;
     }
     

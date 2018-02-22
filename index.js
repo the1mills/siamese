@@ -1,17 +1,18 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
+var util = require('util');
 var log = {
     info: console.log.bind(console, ' [siamese lib] '),
     error: console.error.bind(console, ' [siamese lib] ')
 };
 var customStringify = function (v) {
-    var cache = [];
+    var cache = new Map();
     return JSON.stringify(v, function (key, value) {
         if (typeof value === 'object' && value !== null) {
-            if (cache.indexOf(value) !== -1) {
+            if (cache.get(value)) {
                 return;
             }
-            cache.push(value);
+            cache.set(value, true);
         }
         return value;
     });
@@ -19,6 +20,7 @@ var customStringify = function (v) {
 exports.parse = function (obj) {
     return Promise.resolve(obj).then(function (obj) {
         if (typeof obj !== 'string') {
+            log.error('warning: looks like you have called ijson.parse on an object that was already parsed => ' + util.inspect(obj));
             return obj;
         }
         var ret = JSON.parse(obj);
