@@ -1,14 +1,11 @@
 
 ### matching files
-*.sh
-*.ts
 *.md
 *.txt
 *.log
 *.json
 *.yml
-*.DS_Store
-*.html
+*.tgz
 
 ### folders
 .idea
@@ -16,10 +13,11 @@ node_modules
 coverage
 .nyc_output
 test
-dist
+scripts
 .github
 .tscmultiwatch
 .vscode
+src
 
 ### files
 .gitignore
@@ -31,5 +29,3 @@ suman.conf.js
 .dockerignore
 yarn.lock
 
-### negation
-!*.d.ts
