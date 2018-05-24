@@ -1,6 +1,6 @@
 {
   "name": "siamese",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "description": "Promisifies JSON parse and stringify + makes them idempotent like we wish they would be.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
