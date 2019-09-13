@@ -2,15 +2,12 @@
   "name": "siamese",
   "version": "2.0.11",
   "description": "Promisifies JSON parse and stringify + makes them idempotent like we wish they would be.",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "types": "dist/index.d.ts",
-  "devDependencies": {
-    "@types/core-js": "^0.9.43",
-    "@types/node": "^8.0.53"
-  },
+  "main": "dist/main.js",
+  "typings": "dist/main.d.ts",
+  "types": "dist/main.d.ts",
   "scripts": {
-    "test": "suman test"
+    "test": "echo noop",
+    "tsc": "tsc"
   },
   "repository": {
     "type": "git",
@@ -24,5 +21,12 @@
     "idempotent-json"
   ],
   "author": "Olegzandr VD",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@oresoftware/safe-stringify": "0.0.108"
+  },
+  "devDependencies": {
+    "@types/core-js": "^0.9.43",
+    "@types/node": "^8.0.53"
+  }
 }
