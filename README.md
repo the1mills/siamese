@@ -18,7 +18,8 @@
 ## Basic usage
 
 ```js 
-const siam = global.siam = require('siamese');  // you have the choice whether it's global or not
+const siam = require('siamese');  // you have the choice whether it's global or not
+import * as siam from 'siamese';
 
 ```
 
@@ -44,7 +45,7 @@ This library provides two primary features that I believe are unfortunately miss
 siam.parse({foo:'bar'}).then(function(val){  
     console.log(val);  // =>  {foo:'bar'}
 })
-.catch(function(err){
+.catch(err => {
      //nope
 });
 
@@ -55,7 +56,7 @@ siam.parse(new Promise((resolve) => resolve({foo:'bar'})))
 .then(function(val){
 
 })
-.catch(function(err){
+.catch(err => {
 
 });
 
